@@ -23,6 +23,7 @@ Fixed
 -----
 * Fixed BlueZ version in passive scanning error message. Fixes #1433.
 * Fixed mypy requiring ``Unpack[ExtraArgs]`` that were intended to be optional.  Fixes #1487.
+* Fixed `KeyError` when failing to read characteristic in `corebluetooth` backend.
 
 `0.21.1`_ (2023-09-08)
 ======================

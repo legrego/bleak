@@ -23,6 +23,7 @@ Contributors
 * Robbe Gaeremynck <robbe.gaeremynck@outlook.com>
 * David Johansen <davejohansen@gmail.com>
 * JP Hutchins <jphutchins@gmail.com>
+* Larry Gregory <lgregorydev@gmail.com>
 
 Sponsors
 --------

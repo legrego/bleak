@@ -18,14 +18,14 @@ else:
     from asyncio import timeout as async_timeout
 
 import objc
-from Foundation import NSNumber, NSObject, NSArray, NSData, NSError, NSUUID, NSString
 from CoreBluetooth import (
+    CBCharacteristic,
+    CBCharacteristicWriteWithResponse,
+    CBDescriptor,
     CBPeripheral,
     CBService,
-    CBCharacteristic,
-    CBDescriptor,
-    CBCharacteristicWriteWithResponse,
 )
+from Foundation import NSUUID, NSArray, NSData, NSError, NSNumber, NSObject, NSString
 
 from ...exc import BleakError
 from ..client import NotifyCallback
@@ -154,7 +154,9 @@ class PeripheralDelegate(NSObject):
             async with async_timeout(timeout):
                 return await future
         finally:
-            del self._characteristic_read_futures[characteristic.handle()]
+            handle = characteristic.handle()
+            if handle in self._characteristic_read_futures:
+                del self._characteristic_read_futures[handle]
 
     @objc.python_method
     async def read_descriptor(
